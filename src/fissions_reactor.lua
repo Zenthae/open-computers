@@ -1,5 +1,5 @@
 --Nuclearcraft Fusion Reactor Controller
--- Version 0.0.1 by Zenthae
+-- Version 0.0.2 by Zenthae
 
 --  If reactor ON 
 --      if heat or energy to hight => stop
@@ -17,13 +17,13 @@ local CRITICAL_RF = 0.90
 -- Refresh rate (in second. default: 0.5)
 local refresh = 0.5
 
-local MAX_HEAT = reactor.getHeatCapacity()
+local MAX_HEAT = reactor.getMaxHeatLevel()
 local MAX_RF = reactor.getMaxEnergyStored()
 
-local current_heat = reactor.getHeatStored()
+local current_heat = reactor.getHeatLevel()
 local current_rf = reactor.getEnergyStored()
 
-local activated = reactor.isActivate()
+local activated = reactor.isProcessing()
 
 while true do
     if activated then
@@ -40,7 +40,7 @@ while true do
 end
 
 function UpdateValues()
-    current_heat = reactor.getHeatStored()
+    current_heat = reactor.getHeatLevel()
     current_rf = reactor.getEnergyStored()
-    activated = reactor.isActivate()
+    activated = reactor.isProcessing()
 end
