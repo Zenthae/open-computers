@@ -25,6 +25,12 @@ local current_rf = reactor.getEnergyStored()
 
 local activated = reactor.isProcessing()
 
+function UpdateValues()
+    current_heat = reactor.getHeatLevel()
+    current_rf = reactor.getEnergyStored()
+    activated = reactor.isProcessing()
+end
+
 while true do
     if activated then
         if (current_heat > (MAX_HEAT * CRITICAL_HEAT)) or (current_rf > (MAX_RF * CRITICAL_RF)) then
@@ -39,8 +45,3 @@ while true do
     os.sleep(refresh)
 end
 
-function UpdateValues()
-    current_heat = reactor.getHeatLevel()
-    current_rf = reactor.getEnergyStored()
-    activated = reactor.isProcessing()
-end
